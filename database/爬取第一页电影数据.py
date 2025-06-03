@@ -15,7 +15,7 @@ headers = {
 movie_id = 0
 
 with conn.cursor() as cursor:
-    for i in range(0, 10):
+    for i in range(0, 1):
         url = furl % (i * 25)
         resp = requests.get(url, headers=headers)
         resp.encoding = resp.apparent_encoding
