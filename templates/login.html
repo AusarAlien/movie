@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <title>用户登录界面</title>
+    <link rel="stylesheet" href="/css/loginRegister.css">
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                var username = $("input[name='username']").val();
+                var password = $("input[name='password']").val();
+                var returnUrl = $('#returnUrl').data('returnUrl');
+
+                $.post("/doLogin", {"username": username, "password": password}, function(result){
+                    if(result != null) {
+                        alert(result[0]);
+                        if (result[0] === "登录成功!") {
+                            if (returnUrl == null || returnUrl === "")
+                                window.location.href = "/index";
+                            else
+                                window.location.href = returnUrl;
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body class="text-center" style="background-image: url('/images/red.png');">
+<!-- 用户登录form表单 -->
+<div class="form-signin">
+    <h1>请登录</h1>
+    <input type="text" class="form-control" placeholder="用户名" name="username" required autofocus>
+    <input type="password" class="form-control" placeholder="密码" name="password" required>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me"> 记住我
+        </label>
+    </div>
+    <div class="button-group">
+        <button id="btn">登录</button>
+        <div id="returnUrl" th:attr="data-return-url=${returnUrl}"
+             onclick="window.location.href=(this.getAttribute('data-return-url') ? this.getAttribute('data-return-url') : '/index')">
+            返回
+        </div>
+    </div>
+    <div class="bottom-links">
+        <p class="mt-5 mb-3 text-muted">© <span th:text="${currentYear}">2025</span>-<span th:text="${currentYear}+1">2026</span>
+        </p>
+    </div>
+    </div>
+</body>
+</html>
