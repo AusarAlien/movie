@@ -1,5 +1,3 @@
-
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -10,59 +8,90 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-around;
-    background-color: #333;
-    padding: 10px;
-    height: 24px;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 模糊效果 */
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 柔和阴影 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 边框 */
+    margin: 10px; /* 外边距 */
+    height: 60px; /* 固定高度 */
+    width: calc(100% - 20px); /* 宽度减去外边距 */
+    box-sizing: border-box; /* 包含内边距和边框 */
 }
 .navbar a {
-    width: 100px;
-    color: white;
-    padding: 14px 50px;
+    color: #cd8b8b;
     text-decoration: none;
-    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 .navbar a:hover {
-    background-color: #575757;
+    background: rgba(255, 255, 255, 0.2); /* 悬停背景 */
+    transform: translateY(-2px); /* 轻微上移 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 悬停阴影 */
 }
 .left-links {
-    flex: 1;
-    margin-left: 200px;
+    display: flex;
+    gap: 20px;
 }
 .right-links {
-
     display: flex;
     align-items: center;
-    margin-right: 100px;
+    gap: 20px;
 }
-.right-links a {
-    width: 50px;
-    color: white;
-    padding-top: 13px;
-    padding-bottom: 11px;
-    padding-left: 30px;
-    padding-right: 30px;
-    text-decoration: none;
-    text-align: center;
+
+#vip-tag, #noVip-tag {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 #vip-tag {
-    background-color: gold;
-    color: white;
-    padding: 5px 10px;
-    margin-right: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    text-align: center;
-    font-weight: bold;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* 渐变色 */
+    color: #fff;
 }
+
 #noVip-tag {
-    background-color: rgba(178, 160, 160, 0.96);
-    color: white;
-    padding: 5px 10px;
-    margin-right: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(131, 115, 115, 0.5);
-    text-align: center;
-    font-weight: bold;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* 渐变色 */
+    color: rgba(47, 100, 133, 0.94);
+}
+
+.right-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.right-links a:hover {
+    background: rgba(255, 255, 255, 0.2); /* 悬停背景 */
+    transform: translateY(-2px); /* 轻微上移 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 悬停阴影 */
+}
+
+.right-links a[href*="toLogOut"] {
+    background: rgba(255, 99, 71, 0.2); /* 半透明红色背景 */
+    color: #ff6347; /* 红色文字 */
+}
+
+.right-links a[href*="toLogOut"]:hover {
+    background: rgba(255, 99, 71, 0.4); /* 悬停加深背景 */
+}
+
+.right-links a[href*="toLoginPage"], .right-links a[href*="toRegisterPage"] {
+    background: rgba(0, 191, 255, 0.2); /* 半透明蓝色背景 */
+    color: #00bfff; /* 蓝色文字 */
+}
+
+.right-links a[href*="toLoginPage"]:hover, .right-links a[href*="toRegisterPage"]:hover {
+    background: rgba(0, 191, 255, 0.4); /* 悬停加深背景 */
 }
