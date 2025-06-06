@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <title>用户注册界面</title>
+    <link rel="stylesheet" href="/css/loginRegister.css">
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                var username = $("input[name='username']").val();
+                var password = $("input[name='password']").val();
+                var password2 = $("input[name='password2']").val();
+                $.post("/doRegister", {
+                    "username": username,
+                    "password": password,
+                    "password2": password2
+                }, function (result) {
+                    if (result != null) {
+                        alert(result[0]);
+                        if(result[0] === "注册成功") {
+                            window.location.href = "/toLoginPage";
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body class="text-center" style="background-image: url('/images/red.png');">
+    <!-- 用户注册form表单 -->
+    <div class="form-signin">
+        <h1>请注册</h1>
+        <input type="text" class="form-control" placeholder="用户名" name="username" required autofocus>
+        <input type="password" class="form-control" placeholder="密码" name="password" required>
+        <input type="password" class="form-control" placeholder="确认密码" name="password2" required>
+        <div class="button-group">
+            <button id="btn" type="submit">注册</button>
+            <div id="returnUrl" th:attr="data-return-url=${returnUrl}" onclick="window.location.href=this.getAttribute('data-return-url')">返回</div>
+        </div>
+        <div class="bottom-links">
+            <p class="mt-5 mb-3 text-muted">© <span th:text="${currentYear}">2025</span>-<span th:text="${currentYear}+1">2026</span></p>
+        </div>
+    </div>
+</body>
+</html>
