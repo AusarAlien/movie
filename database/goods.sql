@@ -1,0 +1,1 @@
+INSERT INTO `goods` (`id`, `name`, `description`, `price`, `store`, `create_time`, `update_time`, `unit`) VALUES (1, '3D眼镜', '适用于观看3D电影的高质量眼镜', 29.90, 100, '2025-06-05 17:39:32', '2025-06-05 17:39:32', '副');
